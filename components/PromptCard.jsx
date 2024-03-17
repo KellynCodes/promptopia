@@ -13,10 +13,10 @@ const PromptCard = ({ prompt, handleEdit, handleDelete, handleTagClick }) => {
   const [copied, setCopied] = useState("");
 
   const handleProfileClick = () => {
-    if (prompt.creator._id === session?.user.id) return router.push("/profile");
+    if (prompt.creator?._id === session?.user.id) return router.push("/profile");
 
     router.push(
-      `/profile/${prompt.creator._id}?name=${prompt.creator.username}`
+      `/profile/${prompt.creator?._id}?name=${prompt.creator.username}`
     );
   };
 
@@ -34,7 +34,7 @@ const PromptCard = ({ prompt, handleEdit, handleDelete, handleTagClick }) => {
           onClick={handleProfileClick}
         >
           <Image
-            src={prompt.creator.image}
+            src={prompt?.creator.image}
             alt="user_image"
             width={40}
             height={40}
@@ -43,10 +43,10 @@ const PromptCard = ({ prompt, handleEdit, handleDelete, handleTagClick }) => {
 
           <div className="flex flex-col">
             <h3 className="font-satoshi font-semibold text-gray-900">
-              {prompt.creator.username}
+              {prompt?.creator.username}
             </h3>
             <p className="font-inter text-sm text-gray-500">
-              {prompt.creator.email}
+              {prompt?.creator?.email}
             </p>
           </div>
         </div>
@@ -54,11 +54,11 @@ const PromptCard = ({ prompt, handleEdit, handleDelete, handleTagClick }) => {
         <div className="copy_btn" onClick={handleCopy}>
           <Image
             src={
-              copied === prompt.prompt
+              copied === prompt?.prompt
                 ? "/assets/icons/tick.svg"
                 : "/assets/icons/copy.svg"
             }
-            alt={copied === prompt.prompt ? "tick_icon" : "copy_icon"}
+            alt={copied === prompt?.prompt ? "tick_icon" : "copy_icon"}
             width={12}
             height={12}
           />
@@ -76,7 +76,7 @@ const PromptCard = ({ prompt, handleEdit, handleDelete, handleTagClick }) => {
       {session?.user.id === prompt.creator._id && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p
-            className="font-inter text-sm green_gradient cursor-pointer"
+            className="font-inter text-base green_gradient cursor-pointer"
             onClick={handleEdit}
           >
             Edit
