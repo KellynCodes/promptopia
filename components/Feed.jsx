@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import PromptCard from "@components/PromptCard";
 
-
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className="mt-16 prompt_layout">
@@ -25,13 +24,11 @@ const Feed = () => {
 
   const handleSearchChange = (e) => {
     e.preventDefault();
-
-    
   };
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch("/api/prompts");
+      const res = await fetch("/api/prompts", { cache: "no-cache" });
       const data = await res.json();
       setPrompts(data);
     };
