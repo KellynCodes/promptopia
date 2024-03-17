@@ -18,9 +18,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Navbar.jsx", "app/layout.jsx", "components/Provider.jsx", "utils/db.ts", "components/Form.jsx", "app/create-prompt/page.jsx", "components/Feed.jsx", "components/PromptCard.jsx", "components/Profile.jsx"],
   "exclude": ["node_modules"]
 }
